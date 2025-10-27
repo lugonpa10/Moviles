@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,25 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
 
     public MiAdaptador(ArrayList<SistemaOperativo> sistemasOperativos) {
         this.sistemasOperativos = sistemasOperativos;
+    }
+
+    int selectedPos = RecyclerView.NO_POSITION;
+
+    public int getSelectedPos(){
+        return selectedPos;
+    }
+
+    public void setSelectedPos(int nuevaPos){
+        if (nuevaPos == this.selectedPos){
+            this.selectedPos = RecyclerView.NO_POSITION;
+            notifyItemChanged(nuevaPos);
+        }else {
+            if (this.selectedPos >= 0){
+                notifyItemChanged(this.selectedPos);
+            }
+            this.selectedPos = nuevaPos;
+            notifyItemChanged(nuevaPos);
+        }
     }
 
     @NonNull
@@ -37,6 +57,12 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
         holder.obtenertvEdad().setText(so.getAno()+"");
         holder.obtenerLogo().setImageResource(so.getLogo());
 
+        if (selectedPos == position){
+            holder.itemView.setBackgroundResource(R.color.colorselecionado);
+        }else {
+            holder.itemView.setBackgroundResource(R.color.colorcelda);
+        }
+
 
     }
 
@@ -53,9 +79,18 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
 
         public MyViewHolder(View viewElemento){
             super(viewElemento);
-            this.tvNombre=viewElemento.findViewById(R.id.textView);
-            this.tvEdad=viewElemento.findViewById(R.id.textView2);
+            this.tvNombre=viewElemento.findViewById(R.id.textViewNombre);
+            this.tvEdad=viewElemento.findViewById(R.id.textViewYear);
             this.imgLogo=viewElemento.findViewById(R.id.imageView);
+
+            viewElemento.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int posPulsada = getAdapterPosition();
+                    setSelectedPos(posPulsada);
+                    Toast.makeText(v.getContext(), sistemasOperativos.get(posPulsada).getNombre(),Toast.LENGTH_LONG).show();
+                }
+            });
         }
 
         public TextView obtenertvNombre() {

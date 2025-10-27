@@ -1,8 +1,14 @@
 package com.example.listview;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -17,6 +23,8 @@ public class ejercicioRV extends AppCompatActivity {
     RecyclerView rv;
     MiAdaptador miAdaptador;
 
+    Toolbar toolbar;
+
     RecyclerView.LayoutManager miLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +37,8 @@ public class ejercicioRV extends AppCompatActivity {
             return insets;
         });
 
+
+
         rellenaDatos(10);
         miAdaptador=new MiAdaptador(sistemas);
         rv=findViewById(R.id.rv);
@@ -36,6 +46,17 @@ public class ejercicioRV extends AppCompatActivity {
         rv.setLayoutManager(miLayoutManager);
         rv.setAdapter(miAdaptador);
 
+
+
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.menu2,menu);
+        return true;
     }
 
     public void rellenaDatos(int vueltas){
@@ -57,4 +78,57 @@ public class ejercicioRV extends AppCompatActivity {
             sistemas.add(new SistemaOperativo("Windows 11 "+i, "2021", R.drawable.w11));
         }
     }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int pos = miAdaptador.getSelectedPos();
+        ActionBar ab = getSupportActionBar();
+// Si hay un elemento pulsado
+        if (miAdaptador.getSelectedPos() >= 0) {
+// Se añade un nuevo elemento con la imagen new_item
+            if (item.getItemId() == R.id.madd) {
+// Se añade un elemento en la posición a insertar
+                sistemas.add(pos, new SistemaOperativo("prueba" + pos,
+                        String.valueOf(pos), R.drawable.new_item));
+// Se actualiza esa posición con los nuevos datos
+                miAdaptador.notifyItemInserted(pos);
+// Se desmarca la antigua posición marcada
+                miAdaptador.notifyItemChanged(pos + 1);
+            } else if (item.getItemId() == R.id.mdel) {
+// Borramos el elemento indicado
+                sistemas.remove(pos);
+// Indicamos al adaptador que el elemento se ha borrado
+                miAdaptador.notifyItemRemoved(pos);
+// Indicamos que no hay elementos marcados
+                miAdaptador.setSelectedPos(RecyclerView.NO_POSITION);
+            } else if (item.getItemId() == R.id.medit) {
+// Editamos el nombre del sistema operativo a modificado
+                sistemas.get(pos).setNombre("Modificado");
+// Se actualiza esa posición con los nuevos datos
+                miAdaptador.notifyItemChanged(pos);
+            } else if (item.getItemId() == R.id.mmove) {
+// Se mueve el elemento seleccionado a la posición 1
+                // (la primera posición es 0)
+                SistemaOperativo aux = sistemas.get(pos);
+                // Nueva posición a mover
+                int newPos = 1;
+// Eliminamos el elemento de su posición original
+                sistemas.remove(pos);
+// Lo movemos a su nueva posición
+                sistemas.add(newPos, aux);
+// Se actuliza la posiciones original y nueva para que
+                // reflejen los cambios
+                miAdaptador.notifyItemChanged(pos);
+                miAdaptador.notifyItemMoved(pos, newPos);
+// Indicamos que la posición seleccionada es newPos
+                miAdaptador.setSelectedPos(newPos);
+            }
+        } else {
+            Toast.makeText(this, "Pulsa posición", Toast.LENGTH_SHORT).show();
+        }
+        ab.setTitle("Tam: " + sistemas.size());
+        ab.setSubtitle("Pos: " + miAdaptador.getSelectedPos());
+        return true;
+    }
+
 }
