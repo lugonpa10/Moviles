@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ListView</string>
+    <string-array name="miSpinner">
+        <item>Español</item>
+        <item>Frances</item>
+        <item>Aleman</item>
+        <item>Chino</item>
+        <item>PAncho</item>
+
+    </string-array>
+</resources>

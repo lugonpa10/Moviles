@@ -1,0 +1,23 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/madd"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Add"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/medit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Edit"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/mdel"
+        android:icon="@android:drawable/ic_delete"
+        android:title="Del"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/mmove"
+        android:icon="@android:drawable/sym_contact_card"
+        android:title="Move"
+        app:showAsAction="always" />
+</menu>
