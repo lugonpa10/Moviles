@@ -1,14 +1,28 @@
 package com.example.ejercicio;
 
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<Pelicula> peliculas;
+
+    RecyclerView rv;
+
+    MiAdaptador miAdaptador;
+
+    Toolbar toolbar;
+
+    RecyclerView.LayoutManager miLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,4 +35,10 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+
+
+
+
+
+
 }
