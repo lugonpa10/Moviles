@@ -37,7 +37,7 @@ return mvh;
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.peliculas.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

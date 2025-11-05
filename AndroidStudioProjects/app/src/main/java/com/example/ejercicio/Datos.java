@@ -21,7 +21,7 @@ public class Datos {
 //    }
 
 
-    public ArrayList<Pelicula> rellenaPeliculas(){
+    public static ArrayList<Pelicula> rellenaPeliculas(){
 
         ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
 
