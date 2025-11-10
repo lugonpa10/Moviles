@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         miAdaptador = new MiAdaptador(peliculas);
         rv = findViewById(R.id.recyclerView);
-        miLayoutManager = new GridLayoutManager(this,3);
+        miLayoutManager = new LinearLayoutManager(this);
 
         rv.setLayoutManager(miLayoutManager);
         rv.setAdapter(miAdaptador);
