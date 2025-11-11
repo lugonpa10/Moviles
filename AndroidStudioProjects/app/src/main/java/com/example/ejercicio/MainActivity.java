@@ -3,6 +3,7 @@ package com.example.ejercicio;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.TextView;
 
 
 import androidx.activity.EdgeToEdge;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     MiAdaptador miAdaptador;
 
     Toolbar toolbar;
+    TextView txt;
 
     RecyclerView.LayoutManager miLayoutManager;
 
@@ -40,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         peliculas = Datos.rellenaPeliculas();
+txt = findViewById(R.id.textView);
+        miAdaptador = new MiAdaptador(peliculas,txt);
 
-        miAdaptador = new MiAdaptador(peliculas);
         rv = findViewById(R.id.recyclerView);
         miLayoutManager = new LinearLayoutManager(this);
 

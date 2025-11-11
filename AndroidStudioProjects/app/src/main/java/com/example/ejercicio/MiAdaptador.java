@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class MiAdaptador extends  RecyclerView.Adapter<MiAdaptador.MyViewHolder> {
 
     ArrayList<Pelicula> peliculas;
+    TextView txt;
 
     @NonNull
     @Override
@@ -74,7 +75,9 @@ return mvh;
         }
     }
 
-    public MiAdaptador(ArrayList<Pelicula> peliculas){
+    public MiAdaptador(ArrayList<Pelicula> peliculas,TextView txt){
         this.peliculas = peliculas;
+        this.txt = txt;
+
     }
 }
