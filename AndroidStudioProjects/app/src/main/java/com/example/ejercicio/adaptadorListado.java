@@ -3,17 +3,16 @@ package com.example.ejercicio;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> {
+public class adaptadorListado extends RecyclerView.Adapter<adaptadorListado.MyViewHolder> {
 
     ArrayList<Pelicula> peliculas;
     TextView txt;
@@ -30,7 +29,10 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Pelicula pel = this.peliculas.get(position);
-        holder.getTitulo().setText(pel.getTitulo());
+        holder.getSalaCine().setText(pel.getSala());
+        holder.getEstreno().setText(pel.getFecha()+"");
+        holder.getDuracion().setText(pel.getDuracion());
+
         holder.getDirector().setText(pel.getDirector());
         holder.getPortadas().setImageResource(pel.getPortada());
         holder.getClasi().setImageResource(pel.getClasi());
@@ -45,16 +47,21 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView titulo;
         private TextView director;
         private ImageView portadas;
-
         private ImageView clasi;
+        private TextView duracion;
+        private TextView salaCine;
+
+        private TextView estreno;
+
 
         public MyViewHolder(View viewElemento) {
             super(viewElemento);
 
-            this.titulo = viewElemento.findViewById(R.id.txtTit);
+            this.duracion = viewElemento.findViewById(R.id.txtDuracion);
+            this.estreno = viewElemento.findViewById(R.id.txtEstreno);
+            this.salaCine = viewElemento.findViewById(R.id.txtSalaCine);
             this.director = viewElemento.findViewById(R.id.txtDir);
             this.portadas = viewElemento.findViewById(R.id.imgPor);
             this.clasi = viewElemento.findViewById(R.id.imgClasi);
@@ -69,8 +76,15 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
             });
         }
 
-        public TextView getTitulo() {
-            return titulo;
+        public TextView getDuracion() {
+            return duracion;
+        }
+
+        public TextView getSalaCine(){
+            return salaCine;
+        }
+        public TextView getEstreno(){
+            return estreno;
         }
 
         public TextView getDirector() {
@@ -87,9 +101,10 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
     }
 
 
-    public MiAdaptador(ArrayList<Pelicula> peliculas, TextView txt) {
+    public adaptadorListado(ArrayList<Pelicula> peliculas, TextView txt) {
         this.peliculas = peliculas;
         this.txt = txt;
 
     }
 }
+

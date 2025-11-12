@@ -3,16 +3,18 @@ package com.example.ejercicio;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView txt;
 
+    ImageButton imgToolbar;
+
+
     RecyclerView.LayoutManager miLayoutManager;
 
     @Override
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
         peliculas = Datos.rellenaPeliculas();
 txt = findViewById(R.id.textView);
+imgToolbar = findViewById(R.id.ImgButtonToolbar);
         miAdaptador = new MiAdaptador(peliculas,txt);
 
         rv = findViewById(R.id.recyclerView);
@@ -53,8 +59,24 @@ txt = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        imgToolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActionBar ab = getSupportActionBar() ;
+
+                if (!ab.isShowing()){
+                    ab.show();
+                }else {
+                    ab.hide();
+                }
+
+
+            }
+        });
+
 
     }
+
 
 
     @Override
