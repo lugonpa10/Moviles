@@ -6,7 +6,19 @@
         android:icon="@android:drawable/ic_menu_search"
         android:title="Item"
         app:showAsAction="always" />
-    <item android:title="Item" />
-    <item android:title="Item" />
-    <item android:title="Item" />
+    <item
+        android:id="@+id/ListadoFavoritos"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="item"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/AñadirPeli"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Item"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/SoloFav"
+        android:icon="@android:drawable/checkbox_on_background"
+        android:title="Item"
+        app:showAsAction="always" />
 </menu>

@@ -15,7 +15,7 @@ import java.util.Date;
 public class adaptadorListado extends RecyclerView.Adapter<adaptadorListado.MyViewHolder> {
 
     ArrayList<Pelicula> peliculas;
-    TextView txt;
+
 
 
     @NonNull
@@ -32,6 +32,7 @@ public class adaptadorListado extends RecyclerView.Adapter<adaptadorListado.MyVi
         holder.getSalaCine().setText(pel.getSala());
         holder.getEstreno().setText(pel.getFecha()+"");
         holder.getDuracion().setText(pel.getDuracion());
+        holder.getFavorito().setImageResource(R.drawable.estrella);
 
         holder.getDirector().setText(pel.getDirector());
         holder.getPortadas().setImageResource(pel.getPortada());
@@ -53,6 +54,8 @@ public class adaptadorListado extends RecyclerView.Adapter<adaptadorListado.MyVi
         private TextView duracion;
         private TextView salaCine;
 
+        private ImageView favorito;
+
         private TextView estreno;
 
 
@@ -65,11 +68,12 @@ public class adaptadorListado extends RecyclerView.Adapter<adaptadorListado.MyVi
             this.director = viewElemento.findViewById(R.id.txtDir);
             this.portadas = viewElemento.findViewById(R.id.imgPor);
             this.clasi = viewElemento.findViewById(R.id.imgClasi);
+            this.favorito = viewElemento.findViewById(R.id.imgFavorito);
 
             viewElemento.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    txt.setText(peliculas.get(getAbsoluteAdapterPosition()).getTitulo());
+
 
 
                 }
@@ -87,6 +91,10 @@ public class adaptadorListado extends RecyclerView.Adapter<adaptadorListado.MyVi
             return estreno;
         }
 
+        public ImageView getFavorito(){
+            return favorito;
+        }
+
         public TextView getDirector() {
             return director;
         }
@@ -101,9 +109,9 @@ public class adaptadorListado extends RecyclerView.Adapter<adaptadorListado.MyVi
     }
 
 
-    public adaptadorListado(ArrayList<Pelicula> peliculas, TextView txt) {
+    public adaptadorListado(ArrayList<Pelicula> peliculas) {
         this.peliculas = peliculas;
-        this.txt = txt;
+
 
     }
 }

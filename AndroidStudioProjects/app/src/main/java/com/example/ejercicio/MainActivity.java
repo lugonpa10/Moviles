@@ -1,14 +1,17 @@
 package com.example.ejercicio;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -76,6 +79,26 @@ imgToolbar = findViewById(R.id.ImgButtonToolbar);
 
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if (id==R.id.listadoCompleto){
+            Intent intent=new Intent(MainActivity.this, MainActivity2.class);
+            startActivity(intent);
+            return true;
+        }else if (id==R.id.AñadirPeli){
+
+            return true;
+        }else if (id==R.id.ListadoFavoritos){
+
+            return true;
+        }else if (id == R.id.SoloFav){
+
+            return true;
+        };
+        return super.onOptionsItemSelected(item);
+    } 
 
 
 
