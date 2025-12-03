@@ -21,4 +21,10 @@
         android:icon="@android:drawable/checkbox_on_background"
         android:title="Item"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/Columnas"
+        android:title="Columnas"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        app:showAsAction="always"/>
+
 </menu>

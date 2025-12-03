@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MainActivity2 extends AppCompatActivity {
+public class listadocompleto extends AppCompatActivity {
 
     ArrayList<Pelicula> peliculas = Datos.rellenaPeliculas();
 
@@ -29,9 +29,11 @@ public class MainActivity2 extends AppCompatActivity {
             return insets;
         });
       rv2 = findViewById(R.id.rv2);
-      adaptadorListado = new adaptadorListado(peliculas);
+      adaptadorListado = new adaptadorListado(peliculas,this);
               rv2.setAdapter(adaptadorListado);
               rv2.setLayoutManager(new LinearLayoutManager(this));
+
+
 
     }
 }

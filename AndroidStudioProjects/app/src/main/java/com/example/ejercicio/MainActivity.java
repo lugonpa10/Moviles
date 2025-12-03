@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +27,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Pelicula> peliculas;
+    boolean dosColumnas = false;
+
 
     RecyclerView rv;
 
@@ -84,10 +87,12 @@ imgToolbar = findViewById(R.id.ImgButtonToolbar);
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
         if (id==R.id.listadoCompleto){
-            Intent intent=new Intent(MainActivity.this, MainActivity2.class);
+            Intent intent=new Intent(MainActivity.this, listadocompleto.class);
             startActivity(intent);
             return true;
         }else if (id==R.id.AñadirPeli){
+            Intent intent = new Intent(MainActivity.this,insertarPeli.class);
+            startActivity(intent);
 
             return true;
         }else if (id==R.id.ListadoFavoritos){
@@ -95,8 +100,36 @@ imgToolbar = findViewById(R.id.ImgButtonToolbar);
             return true;
         }else if (id == R.id.SoloFav){
 
+            ArrayList<Pelicula> filtro = new ArrayList<>();
+
+            for (Pelicula p : peliculas){
+                if (p.getFavorita())
+                    filtro.add(p);
+            }
+
+            miAdaptador = new MiAdaptador(filtro, txt);
+            rv.setAdapter(miAdaptador);
+
+            getSupportActionBar().setSubtitle("Favoritas: " + filtro.size());
+
             return true;
-        };
+
+
+        }else if(id==R.id.Columnas){
+
+
+            if (dosColumnas){
+                miLayoutManager = new GridLayoutManager(this,2);
+                rv.setLayoutManager(miLayoutManager);
+                dosColumnas = false;
+
+            }else {
+                miLayoutManager = new GridLayoutManager(this,1);
+                rv.setLayoutManager(miLayoutManager);
+            }
+        }
+
+
         return super.onOptionsItemSelected(item);
     } 
 
@@ -109,10 +142,29 @@ imgToolbar = findViewById(R.id.ImgButtonToolbar);
         return true;
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK){
+            String titulo = data.getStringExtra("nombre");
+            String director = data.getStringExtra("director");
+            int duracion = data.getIntExtra("duracion",0);
+            String sala = data.getStringExtra("sala");
+            int clasi = data.getIntExtra("clasi",0);
+
+
+
+
+        }
+
+    }
 
 
 
 
 
 
-}
+
+
+
+    }
