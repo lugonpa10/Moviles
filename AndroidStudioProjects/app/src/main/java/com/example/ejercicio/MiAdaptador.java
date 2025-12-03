@@ -1,5 +1,6 @@
 package com.example.ejercicio;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,19 @@ public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.MyViewHolder> 
                 @Override
                 public void onClick(View v) {
                     txt.setText(peliculas.get(getAbsoluteAdapterPosition()).getTitulo());
+
+                    viewElemento.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+
+                            txt.setText(peliculas.get(getAbsoluteAdapterPosition()).getTitulo());
+
+
+
+                        }
+                    });
+
 
 
                 }
