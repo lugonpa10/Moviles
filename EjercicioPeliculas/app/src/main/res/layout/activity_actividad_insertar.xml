@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    tools:context=".InsertarPeliculas">
+
+    <TextView
+        android:id="@+id/tvTituloInsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Titulo"
+        app:layout_constraintBottom_toBottomOf="@+id/etTituloInsertar"
+        app:layout_constraintEnd_toStartOf="@+id/etTituloInsertar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etTituloInsertar" />
+
+    <TextView
+        android:id="@+id/tvDirectorInsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Director"
+        app:layout_constraintBottom_toBottomOf="@+id/etDirectorInsertar"
+        app:layout_constraintEnd_toStartOf="@+id/etDirectorInsertar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etDirectorInsertar" />
+
+    <TextView
+        android:id="@+id/tvDuracionInsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duracion"
+        app:layout_constraintBottom_toBottomOf="@+id/etDuracioInsertar"
+        app:layout_constraintEnd_toStartOf="@+id/etDuracioInsertar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etDuracioInsertar" />
+
+    <TextView
+        android:id="@+id/tvSalaInsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sala"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerSalaInsertar"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerSalaInsertar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spinnerSalaInsertar" />
+
+    <EditText
+        android:id="@+id/etTituloInsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvTituloInsertar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etDirectorInsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etTituloInsertar"
+        app:layout_constraintTop_toBottomOf="@+id/etTituloInsertar" />
+
+    <EditText
+        android:id="@+id/etDuracioInsertar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etDirectorInsertar"
+        app:layout_constraintTop_toBottomOf="@+id/etDirectorInsertar" />
+
+    <Spinner
+        android:id="@+id/spinnerSalaInsertar"
+        android:layout_width="206dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/etDuracioInsertar"
+        app:layout_constraintStart_toStartOf="@+id/etDuracioInsertar"
+        app:layout_constraintTop_toBottomOf="@+id/etDuracioInsertar" />
+
+    <!-- ImageView FUERA del RadioGroup, en el ConstraintLayout -->
+
+    <RadioGroup
+        android:id="@+id/grupoEdades"
+        android:layout_width="361dp"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/imagenClasificacion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSalaInsertar"
+        app:layout_constraintVertical_bias="0.047">
+
+        <RadioButton
+            android:id="@+id/rb1Insertar"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:text="PG"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/rb2Insertar"
+            android:layout_width="114dp"
+            android:layout_height="wrap_content"
+            android:text="PG-13"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/rb3Insertar"
+            android:layout_width="117dp"
+            android:layout_height="wrap_content"
+            android:text="R"
+            android:textColor="@color/black" />
+
+        <RadioButton
+            android:id="@+id/rb4Insertar"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:text="G"
+            android:textColor="@color/black" />
+    </RadioGroup>
+
+    <CalendarView
+        android:id="@+id/calendarioFechaInsertar"
+        android:layout_width="205dp"
+        android:layout_height="272dp"
+        android:background="@color/material_dynamic_primary20"
+        android:backgroundTint="@android:color/background_light"
+        android:selectedWeekBackgroundColor="@color/light_brown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/mustard"
+        android:backgroundTint="@color/mustard"
+        android:text="Añadir"
+        android:textColor="@color/black"
+        android:textColorHint="#C51C1C"
+        android:textColorLink="@color/light_brown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintStart_toEndOf="@+id/calendarioFechaInsertar"
+        app:layout_constraintTop_toBottomOf="@+id/imagenClasificacion"
+        app:layout_constraintVertical_bias="0.741" />
+
+    <ImageView
+        android:id="@+id/imagenClasificacion"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="268dp"
+        android:contentDescription="Imagen de clasificación"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toEndOf="@+id/calendarioFechaInsertar"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSalaInsertar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
